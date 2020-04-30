@@ -1,0 +1,2 @@
+# recofit_native
+WebアプリのRecoFitのネイティブアプリverです。
