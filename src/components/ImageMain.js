@@ -40,11 +40,11 @@ import {View, Text, Image} from 'react-native';
 // }
 
 const ImageMain = ({imageInfo}) => {
-  const {id, comment, event} = imageInfo;
+  const {created_at, comment, event} = imageInfo;
   const {imageStyle, textStyle, wrapperStyle} = styles;
   return (
     <View style={wrapperStyle}>
-      <Text style={textStyle}>{id}</Text>
+      <Text style={textStyle}>{created_at}</Text>
       <Text style={textStyle}>{comment}</Text>
       <View>
         {event.map(data => {

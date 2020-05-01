@@ -34,7 +34,7 @@ const App: () => React$Node = () => {
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Recofit_Native</Text>
         <Text style={styles.sectionDescription}>
-          記録一覧
+          タイムライン
         </Text>
         <ImageList />
       </View>
