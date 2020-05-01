@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
 
-const ImageMain = ({imageInfo}) => {
+const RecordIndex = ({imageInfo}) => {
   const {created_at, comment, event} = imageInfo;
   const {imageStyle, textStyle, wrapperStyle} = styles;
   return (
@@ -47,4 +47,4 @@ const styles = {
   },
 };
 
-export default ImageMain;
+export default RecordIndex;

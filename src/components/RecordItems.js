@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 import axios from 'axios';
-import ImageMain from './ImageMain';
+import RecordIndex from './RecordIndex';
 
-class ImageList extends Component {
+class RecordItems extends Component {
   state = {
     images: []
   }
@@ -15,19 +15,19 @@ class ImageList extends Component {
     });
   }
 
-  renderImages() {
+  renderRecords() {
     return this.state.images.map(data => {
-      return <ImageMain key={data.id} imageInfo={data} />
+      return <RecordIndex key={data.id} imageInfo={data} />
     });
   }
 
   render() {
     return (
       <ScrollView>
-        { this.renderImages() }
+        { this.renderRecords() }
       </ScrollView>
     )
   }
 }
 
-export default ImageList;
+export default RecordItems;
