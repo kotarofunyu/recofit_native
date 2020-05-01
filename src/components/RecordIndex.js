@@ -3,12 +3,20 @@ import {View, Text, Image} from 'react-native';
 
 const RecordIndex = ({imageInfo}) => {
   const {created_at, comment, event} = imageInfo;
-  const {imageStyle, textStyle, wrapperStyle} = styles;
+  const {
+    textStyle,
+    wrapperStyle,
+    commentArea,
+    eventArea,
+    datetimeArea,
+    datetimeStyle
+  } = styles;
   return (
     <View style={wrapperStyle}>
-      <Text style={textStyle}>{created_at}</Text>
-      <Text style={textStyle}>{comment}</Text>
-      <View>
+      <View style={commentArea}>
+        <Text style={textStyle}>{comment}</Text>
+      </View>
+      <View style={eventArea}>
         {event.map(data => {
           return (
             <View>
@@ -19,12 +27,15 @@ const RecordIndex = ({imageInfo}) => {
                     <Text key={item}>
                       {item.weight} x {item.rep} x {item.set}
                     </Text>
-                  )
+                  );
                 })}
               </View>
             </View>
           );
         })}
+      </View>
+      <View style={datetimeArea}>
+        <Text style={datetimeStyle}>{created_at}</Text>
       </View>
     </View>
   );
@@ -35,6 +46,18 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: 20,
+    margin: 10,
+    borderWidth: 2,
+    borderColor: '#FB9508',
+    borderRadius: 5,
+  },
+  commentArea: {
+    marginBottom: 10,
+  },
+  eventArea: {
+    padding: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#000',
   },
   imageStyle: {
     height: 300,
@@ -44,6 +67,15 @@ const styles = {
   textStyle: {
     fontSize: 18,
     fontWeight: '600',
+  },
+  datetimeArea: {
+    padding: 5,
+  },
+  datetimeStyle: {
+    fontSize: 12,
+    fontWeight: '300',
+    textAlign: 'right',
+    marginTop: 15,
   },
 };
 

@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './src/screens/HomeScreen';
 import EventScreen from './src/screens/EventScreen';
 import UserScreen from './src/screens/UserScreen';
+Ionicons.loadFont();
 
 const Tab = createBottomTabNavigator();
 
@@ -17,14 +18,14 @@ export default function App() {
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
 
-            if (route.name === 'Home') {
+            if (route.name === 'ホーム') {
               iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'Event') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            } else if (route.name === 'User') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
+                ? 'ios-home'
+                : 'ios-home';
+            } else if (route.name === '種目') {
+              iconName = focused ? 'ios-list' : 'ios-list';
+            } else if (route.name === 'ユーザー') {
+              iconName = focused ? 'ios-person' : 'ios-person';
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
@@ -33,9 +34,9 @@ export default function App() {
           activeTintColor: 'tomato',
           inactiveTintColor: 'grey',
         }}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Event" component={EventScreen} />
-        <Tab.Screen name="User" component={UserScreen} />
+        <Tab.Screen name="ホーム" component={HomeScreen} />
+        <Tab.Screen name="種目" component={EventScreen} />
+        <Tab.Screen name="ユーザー" component={UserScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
