@@ -1,50 +1,12 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
 
-// const ImageMain = ({ imageInfo }) => {
-//   const { title, image } = imageInfo;
-//   const { imageStyle, textStyle, wrapperStyle } = styles;
-//   return (
-//     <View style={ wrapperStyle }>
-//       <Text style={ textStyle }>
-//         { title }
-//       </Text>
-//       <Image
-//         source={{ uri: image }}
-//         style={ imageStyle }
-//         />
-//     </View>
-//   )
-// }
-
-// const ImageMain = ({ imageInfo }) => {
-//   const { title, artist, url, thumbnail_image } = imageInfo;
-//   const { imageStyle, textStyle, wrapperStyle } = styles;
-//   return (
-//     <View style={ wrapperStyle }>
-//       <Text style={ textStyle }>
-//         { title }
-//       </Text>
-//       <Text style={ textStyle }>
-//         { artist }
-//       </Text>
-//       <Text style={ textStyle }>
-//         { url }
-//       </Text>
-//       <Image
-//         source={{ uri: thumbnail_image }}
-//         style={ imageStyle }
-//         />
-//     </View>
-//   )
-// }
-
 const ImageMain = ({imageInfo}) => {
-  const {id, comment, event} = imageInfo;
+  const {created_at, comment, event} = imageInfo;
   const {imageStyle, textStyle, wrapperStyle} = styles;
   return (
     <View style={wrapperStyle}>
-      <Text style={textStyle}>{id}</Text>
+      <Text style={textStyle}>{created_at}</Text>
       <Text style={textStyle}>{comment}</Text>
       <View>
         {event.map(data => {
