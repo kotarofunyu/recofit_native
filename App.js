@@ -31,7 +31,10 @@ export default function App() {
             : 'ios-information-circle-outline';
           } else if (route.name === 'Event') {
             iconName = focused ? 'ios-list-box' : 'ios-list';
+          } else if (route.name === 'User') {
+            iconName = focused ? 'ios-list-box' : 'ios-list';
           }
+          return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{

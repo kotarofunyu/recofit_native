@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import HomeScreen from './HomeScreen';
-import DetailScreen from './DetailScreen';
+import DetailScreen from './EventScreen';
 import UserScreen from './UserScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
