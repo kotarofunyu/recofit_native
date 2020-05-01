@@ -4,11 +4,13 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import Title from '../elements/Header';
 
 class EventScreen extends React.Component {
   render() {
     return (
       <View>
+        <Title />
         <Text>
         種目一覧
         </Text>
