@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import RecordItems from '../components/RecordItems';
 import Title from '../elements/Header';
+import Heading from '../elements/Heading';
 
 
 class HomeScreen extends React.Component {
@@ -13,7 +14,7 @@ class HomeScreen extends React.Component {
     return (
       <View>
         <Title />
-        <Text>記録一覧</Text>
+        <Heading name="記録一覧" />
         <RecordItems />
       </View>
     )
