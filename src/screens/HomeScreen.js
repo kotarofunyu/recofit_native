@@ -4,14 +4,18 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import ImageList from '../components/ImageList';
+import RecordItems from '../components/RecordItems';
+import Title from '../elements/Header';
+import Heading from '../elements/Heading';
 
 
 class HomeScreen extends React.Component {
   render() {
     return (
       <View>
-        <ImageList />
+        <Title />
+        <Heading name="記録一覧" />
+        <RecordItems />
       </View>
     )
   }
