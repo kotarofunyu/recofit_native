@@ -9,7 +9,7 @@ const RecordIndex = ({imageInfo}) => {
     commentArea,
     eventArea,
     datetimeArea,
-    datetimeStyle
+    datetimeStyle,
   } = styles;
   return (
     <View style={wrapperStyle}>
