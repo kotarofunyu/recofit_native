@@ -8,7 +8,7 @@ import EventScreen from './src/screens/EventScreen';
 import UserScreen from './src/screens/UserScreen';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 Ionicons.loadFont();
 
 const Tab = createBottomTabNavigator();
@@ -16,10 +16,10 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   const MainNavigator = createAppContainer(
     createSwitchNavigator({
-      login: { screen: LoginScreen },
-      main: { screen: MainScreen }
-    })
-  )
+      login: {screen: LoginScreen},
+      main: {screen: MainScreen},
+    }),
+  );
 
   return (
     <NavigationContainer>
@@ -30,9 +30,7 @@ export default function App() {
             let iconName;
 
             if (route.name === 'ホーム') {
-              iconName = focused
-                ? 'ios-home'
-                : 'ios-home';
+              iconName = focused ? 'ios-home' : 'ios-home';
             } else if (route.name === '種目') {
               iconName = focused ? 'ios-list' : 'ios-list';
             } else if (route.name === 'ユーザー') {
