@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
       <View>
         <Title />
         <Heading name="記録一覧" />
-        <RecordItems />
+        <RecordItems getUrl="https://recofit.jp/api/training_record" />
       </View>
     );
   }

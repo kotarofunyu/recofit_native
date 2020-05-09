@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, AsyncStorage, ScrollView} from 'react-native';
+// import {AsyncStorage} from '@react-native-community/async-storage';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
 import {FlatList} from 'react-native-gesture-handler';
+import RecordItems from '../components/RecordItems';
 import RecordIndex from '../components/RecordIndex';
 
 class UserScreen extends React.Component {
@@ -14,6 +16,8 @@ class UserScreen extends React.Component {
       records: [],
       loading: '',
       apiToken: '',
+      userRecordUrl: '',
+      test: '',
     };
   }
 
@@ -21,15 +25,13 @@ class UserScreen extends React.Component {
     this.setState({
       loading: true,
       apiToken: await AsyncStorage.getItem('api_token'),
+      userRecordUrl: `http://localhost/api/user_record/${this.state.apiToken}`,
+      test: 'http://localhost/api/user_record/Zj2bVMdX9kc3xjn5SjgE5hko',
     });
     fetch(`http://localhost/api/user/${this.state.apiToken}`)
       .then(response => response.json())
       .then(jsonData => this.setState({loading: false, tasks: jsonData}))
       .catch(error => console.error(error));
-    this.setState({
-      loadgin: true,
-      apiToken: await AsyncStorage.getItem('api_token'),
-    });
     fetch(`http://localhost/api/user_record/${this.state.apiToken}`)
       .then(response => response.json())
       .then(recordsData =>
@@ -39,8 +41,8 @@ class UserScreen extends React.Component {
   }
 
   renderRecords() {
-    return this.state.records.map(data => {
-      return <RecordIndex key={data.id} imageInfo={data} />;
+    return this.state.records.map((data, i) => {
+      return <RecordIndex key={i} imageInfo={data} />;
     });
   }
 
@@ -48,15 +50,23 @@ class UserScreen extends React.Component {
     return (
       <View>
         <Title />
-        <Heading name="ログイン中のユーザー" />
-        <View>
-          <Text>{this.state.tasks.name}</Text>
-          <Text>{this.state.tasks.introduction}</Text>
+        <View style={styles.UserWrapper}>
+          <Heading name="ログイン中のユーザー" />
+          <View>
+            <Text>{this.state.tasks.name}</Text>
+            <Text>{this.state.tasks.introduction}</Text>
+          </View>
+          <ScrollView>{this.renderRecords()}</ScrollView>
         </View>
-        <ScrollView>{this.renderRecords()}</ScrollView>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  UserWrapper: {
+    margin: 20,
+  },
+});
 
 export default UserScreen;

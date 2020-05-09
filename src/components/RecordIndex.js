@@ -20,11 +20,11 @@ const RecordIndex = ({imageInfo}) => {
         {event.map(data => {
           return (
             <View>
-              <Text key={data}>{data.name}</Text>
+              <Text>{data.name}</Text>
               <View>
                 {data.set.map(item => {
                   return (
-                    <Text key={item}>
+                    <Text>
                       {item.weight} x {item.rep} x {item.set}
                     </Text>
                   );

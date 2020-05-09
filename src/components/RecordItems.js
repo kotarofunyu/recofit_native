@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, Text} from 'react-native';
+import {View, ScrollView, Text} from 'react-native';
 import axios from 'axios';
 import RecordIndex from './RecordIndex';
 
@@ -15,13 +15,18 @@ class RecordItems extends Component {
   }
 
   renderRecords() {
-    return this.state.images.map(data => {
-      return <RecordIndex key={data.id} imageInfo={data} />;
+    return this.state.images.map((data, i) => {
+      return <RecordIndex key={i} imageInfo={data} />;
     });
   }
 
   render() {
-    return <ScrollView>{this.renderRecords()}</ScrollView>;
+    return (
+      <View>
+        <Text>{this.props.getUrl}</Text>
+        <ScrollView>{this.renderRecords()}</ScrollView>
+      </View>
+    );
   }
 }
 
