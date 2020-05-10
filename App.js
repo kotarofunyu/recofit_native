@@ -9,6 +9,7 @@ import UserScreen from './src/screens/UserScreen';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import PostScreen from './src/screens/PostScreen';
+import CreateUserScreen from './src/screens/CreateUserScreen';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 Ionicons.loadFont();
 
@@ -49,6 +50,7 @@ export default function App() {
         <Tab.Screen name="ユーザー" component={UserScreen} />
         <Tab.Screen name="ログイン" component={LoginScreen} />
         <Tab.Screen name="記録する" component={PostScreen} />
+        <Tab.Screen name="登録する" component={CreateUserScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
