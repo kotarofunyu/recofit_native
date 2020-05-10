@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, AsyncStorage, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  AsyncStorage,
+  ScrollView,
+  Image,
+} from 'react-native';
 // import {AsyncStorage} from '@react-native-community/async-storage';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
@@ -38,6 +45,7 @@ class UserScreen extends React.Component {
         this.setState({loading: false, records: recordsData}),
       )
       .catch(error => console.error(error));
+    cosole.log('aaaa');
   }
 
   renderRecords() {
@@ -52,6 +60,10 @@ class UserScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
+          <Image
+            source={{uri: `http://localhost/${this.state.tasks.url}`}}
+            style={{width: 50, height: 50}}
+          />
           <View>
             <Text>{this.state.tasks.name}</Text>
             <Text>{this.state.tasks.introduction}</Text>
@@ -66,6 +78,11 @@ class UserScreen extends React.Component {
 const styles = StyleSheet.create({
   UserWrapper: {
     margin: 20,
+  },
+  imageStyle: {
+    height: 300,
+    flex: 1,
+    width: null,
   },
 });
 

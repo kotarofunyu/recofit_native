@@ -8,6 +8,14 @@ import {FlatList} from 'react-native-gesture-handler';
 import RecordItems from '../components/RecordItems';
 import RecordIndex from '../components/RecordIndex';
 
+function Item({name}) {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.name}>{name} </Text>
+    </View>
+  );
+}
+
 class EventScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -35,11 +43,12 @@ class EventScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="種目一覧" />
-          <View>
-            {this.state.events.map(data => {
-              return <Text key={data}>{data.name}</Text>;
-            })}
-          </View>
+          <FlatList
+            data={this.state.events}
+            removeClippedSubviews={false}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => <Item name={item.name} />}
+          />
         </View>
       </View>
     );
@@ -49,6 +58,17 @@ class EventScreen extends React.Component {
 const styles = StyleSheet.create({
   UserWrapper: {
     margin: 20,
+  },
+  item: {
+    backgroundColor: '#F6B12D',
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  name: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
