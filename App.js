@@ -8,6 +8,7 @@ import EventScreen from './src/screens/EventScreen';
 import UserScreen from './src/screens/UserScreen';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import PostScreen from './src/screens/PostScreen';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 Ionicons.loadFont();
 
@@ -23,7 +24,6 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MainNavigator />
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
@@ -48,6 +48,7 @@ export default function App() {
         <Tab.Screen name="種目" component={EventScreen} />
         <Tab.Screen name="ユーザー" component={UserScreen} />
         <Tab.Screen name="ログイン" component={LoginScreen} />
+        <Tab.Screen name="記録する" component={PostScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
