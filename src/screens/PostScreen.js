@@ -14,7 +14,7 @@ export default class PostScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiToken: 'Zj2bVMdX9kc3xjn5SjgE5hko',
+      apiToken: '',
       comment: 'from react native',
       eventData: [
         {
@@ -33,11 +33,11 @@ export default class PostScreen extends React.Component {
     };
   }
 
-  // async componetDidMout() {
-  //   this.setState({
-  //     apiToken: await AsyncStorage.getItem('api_token'),
-  //   });
-  // }
+  async componentDidMount() {
+    this.setState({
+      apiToken: await AsyncStorage.getItem('api_token'),
+    });
+  }
 
   submitCreatePost() {
     fetch('http://localhost/api/training_record/', {
@@ -75,7 +75,6 @@ export default class PostScreen extends React.Component {
       <View>
         <Title />
         <Heading name="記録する" />
-        <Text>{this.state.apiToken}</Text>
         <View>
           <TextInput
             placeholder="今日のトレーニングはどうだった？"
@@ -112,6 +111,7 @@ export default class PostScreen extends React.Component {
             title="記録する"
             onPress={() => {
               this.submitCreatePost();
+              this.props.navigation.goBack();
             }}
           />
         </View>

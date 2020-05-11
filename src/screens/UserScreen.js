@@ -6,6 +6,7 @@ import {
   AsyncStorage,
   ScrollView,
   Image,
+  Button,
 } from 'react-native';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
@@ -57,7 +58,6 @@ class UserScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
-          <Text>{this.state.apiToken}</Text>
           <Image
             source={{uri: `http://localhost/${this.state.tasks.url}`}}
             style={{width: 50, height: 50}}
@@ -65,6 +65,12 @@ class UserScreen extends React.Component {
           <View>
             <Text>{this.state.tasks.name}</Text>
             <Text>{this.state.tasks.introduction}</Text>
+          </View>
+          <View>
+            <Button
+              title="ログアウト"
+              onPress={() => this.props.navigation.navigate('Logout')}
+            />
           </View>
           <ScrollView>{this.renderRecords()}</ScrollView>
         </View>
