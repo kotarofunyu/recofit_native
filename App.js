@@ -35,7 +35,6 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Post" component={PostScreen} />
-      <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -44,6 +43,7 @@ function UserStackScreen() {
   return (
     <UserStack.Navigator>
       <UserStack.Screen name="User" component={UserScreen} />
+      <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
       <UserStack.Screen name="Logout" component={MainScreen} />
     </UserStack.Navigator>
   );
