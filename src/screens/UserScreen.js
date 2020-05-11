@@ -60,6 +60,7 @@ class UserScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
+          <Text>{this.state.apiToken}</Text>
           <Image
             source={{uri: `http://localhost/${this.state.tasks.url}`}}
             style={{width: 50, height: 50}}
