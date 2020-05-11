@@ -23,7 +23,6 @@ class RecordItems extends Component {
   render() {
     return (
       <View>
-        <Text>{this.props.getUrl}</Text>
         <ScrollView>{this.renderRecords()}</ScrollView>
       </View>
     );
