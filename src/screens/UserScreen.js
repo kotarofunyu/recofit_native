@@ -7,11 +7,8 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-// import {AsyncStorage} from '@react-native-community/async-storage';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
-import {FlatList} from 'react-native-gesture-handler';
-import RecordItems from '../components/RecordItems';
 import RecordIndex from '../components/RecordIndex';
 
 class UserScreen extends React.Component {
@@ -60,6 +57,7 @@ class UserScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
+          <Text>{this.state.apiToken}</Text>
           <Image
             source={{uri: `http://localhost/${this.state.tasks.url}`}}
             style={{width: 50, height: 50}}
