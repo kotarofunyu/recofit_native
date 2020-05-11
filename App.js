@@ -26,6 +26,7 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Post" component={PostScreen} />
+      <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
     </HomeStack.Navigator>
   );
 }
