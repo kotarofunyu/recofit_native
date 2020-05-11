@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Button} from 'react-native';
 
 const RecordIndex = ({imageInfo}) => {
   const {created_at, comment, event} = imageInfo;

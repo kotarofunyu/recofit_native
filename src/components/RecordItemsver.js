@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, Button, RefreshControl} from 'react-native';
 import axios from 'axios';
-import RecordIndex from './RecordIndex';
+import RecordIndex from './RecordIndexver';
 
 class RecordItems extends Component {
   state = {
@@ -39,18 +39,11 @@ class RecordItems extends Component {
   render() {
     return (
       <View>
-        <Button
-          title="記録する"
-          onPress={() => this.props.navigation.navigate('RecordDetail')}
-        />
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }>
-          {this.renderRecords()}
+        <ScrollView>
+          <RecordIndex
+            records={this.state.images}
+            navigation={this.props.navigation}
+          />
         </ScrollView>
       </View>
     );

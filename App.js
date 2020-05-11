@@ -11,6 +11,8 @@ import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import PostScreen from './src/screens/PostScreen';
 import CreateUserScreen from './src/screens/CreateUserScreen';
+import RecordScreen from './src/screens/RecordScreen';
+import RecordIndex from './src/components/RecordIndex';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 Ionicons.loadFont();
 
@@ -26,11 +28,14 @@ const HomeStack = createStackNavigator();
 
 const UserStack = createStackNavigator();
 
+const RecordStack = createStackNavigator();
+
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="Post" component={PostScreen} />
+      <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -41,6 +46,15 @@ function UserStackScreen() {
       <UserStack.Screen name="User" component={UserScreen} />
       <UserStack.Screen name="Logout" component={MainScreen} />
     </UserStack.Navigator>
+  );
+}
+
+function RecordStackScreen() {
+  return (
+    <RecordStack.Navigator>
+      <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
+      <RecordStack.Screen name="RecordIndex" component={RecordIndex} />
+    </RecordStack.Navigator>
   );
 }
 
