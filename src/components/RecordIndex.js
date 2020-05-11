@@ -1,45 +1,50 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Button} from 'react-native';
 
-const RecordIndex = ({imageInfo}) => {
-  const {created_at, comment, event} = imageInfo;
-  const {
-    textStyle,
-    wrapperStyle,
-    commentArea,
-    eventArea,
-    datetimeArea,
-    datetimeStyle,
-  } = styles;
-  return (
-    <View style={wrapperStyle}>
-      <View style={commentArea}>
-        <Text style={textStyle}>{comment}</Text>
-      </View>
-      <View style={eventArea}>
-        {event.map(data => {
-          return (
-            <View>
-              <Text>{data.name}</Text>
+export default class RecordList extends React.Component {
+  renderRecord(record) {
+    return (
+      <View style={styles.wrapperStyle}>
+        <View style={styles.commentArea}>
+          <Text>{record.comment}</Text>
+        </View>
+        <View style={styles.eventArea}>
+          {record.event.map(data => {
+            return (
               <View>
-                {data.set.map(item => {
-                  return (
-                    <Text>
-                      {item.weight} x {item.rep} x {item.set}
-                    </Text>
-                  );
-                })}
+                <Text>{data.name}</Text>
+                <View>
+                  {data.set.map(item => {
+                    return (
+                      <Text>
+                        {item.weight} x {item.rep} x {item.set}
+                      </Text>
+                    );
+                  })}
+                </View>
               </View>
-            </View>
-          );
-        })}
+            );
+          })}
+        </View>
+        <View style={styles.datetimeArea}>
+          <Text style={styles.datetimeStyle}>{record.created_at}</Text>
+        </View>
+        <Button
+          title="詳細"
+          onPress={() => this.props.navigation.navigate('RecordDetail')}
+        />
       </View>
-      <View style={datetimeArea}>
-        <Text style={datetimeStyle}>{created_at}</Text>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+  render() {
+    const list = [];
+    this.props.records.forEach(record => {
+      list.push(this.renderRecord(record));
+    });
+
+    return <View>{list}</View>;
+  }
+}
 
 const styles = {
   wrapperStyle: {
@@ -79,4 +84,4 @@ const styles = {
   },
 };
 
-export default RecordIndex;
+// export default RecordIndex;

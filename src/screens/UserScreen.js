@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
-import RecordIndex from '../components/RecordIndexver';
-// import RecordIndex from '../components/RecordIndex';
+import RecordIndex from '../components/RecordIndex';
 
 class UserScreen extends React.Component {
   constructor(props) {

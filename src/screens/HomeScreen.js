@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
-import RecordItems from '../components/RecordItemsver';
-// import RecordItems from '../components/RecordItems';
+import RecordItems from '../components/RecordItems';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
 

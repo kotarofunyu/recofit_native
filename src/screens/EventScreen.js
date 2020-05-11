@@ -1,12 +1,8 @@
-// export default EventScreen;
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, AsyncStorage, ScrollView} from 'react-native';
-// import {AsyncStorage} from '@react-native-community/async-storage';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
 import {FlatList} from 'react-native-gesture-handler';
-import RecordItems from '../components/RecordItems';
-import RecordIndex from '../components/RecordIndex';
 
 function Item({name}) {
   return (
