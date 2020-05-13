@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, Button, RefreshControl} from 'react-native';
-import axios from 'axios';
 import RecordIndex from './RecordIndex';
 
 class RecordItems extends Component {
@@ -8,19 +7,6 @@ class RecordItems extends Component {
     images: [],
     refreshing: false,
   };
-
-  // componentWillMount() {
-  //   axios.get('https://recofit.jp/api/training_record').then(res => {
-  //     this.setState({images: res.data, refreshing: true});
-  //   });
-  // }
-
-  // _onRefresh = () => {
-  //   this.setState({refreshing: true});
-  //   this.componentWillMount().then(() => {
-  //     this.setState({refreshing: false});
-  //   });
-  // };
 
   componentDidMount() {
     this._fetch();

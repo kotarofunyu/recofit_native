@@ -7,6 +7,7 @@ import {
   ScrollView,
   Image,
   Button,
+  RefreshControl,
 } from 'react-native';
 import Title from '../elements/Header';
 import Heading from '../elements/Heading';
@@ -23,6 +24,7 @@ class UserScreen extends React.Component {
       apiToken: '',
       userRecordUrl: '',
       test: '',
+      refreshing: false,
     };
   }
 
@@ -35,24 +37,33 @@ class UserScreen extends React.Component {
       }`,
       test: 'https://recofit.jp/api/user_record/Zj2bVMdX9kc3xjn5SjgE5hko',
     });
-    fetch(`http://recofit.jp/api/user/${this.state.apiToken}`)
+    this._userFetch();
+    this._userRecordFetch();
+  }
+
+  _userFetch = () => {
+    fetch(`https://recofit.jp/api/user/${this.state.apiToken}`)
       .then(response => response.json())
       .then(jsonData => this.setState({loading: false, tasks: jsonData}))
       .catch(error => console.error(error));
-    fetch(`https://recofit.jp/api/user_record/${this.state.apiToken}`)
-      .then(response => response.json())
-      .then(recordsData =>
-        this.setState({loading: false, records: recordsData}),
-      )
-      .catch(error => console.error(error));
-    cosole.log('aaaa');
-  }
+  };
 
-  renderRecords() {
-    return this.state.records.map((data, i) => {
-      return <RecordIndex key={i} imageInfo={data} />;
-    });
-  }
+  _userRecordFetch = () => {
+    fetch(`https://recofit.jp/api/user_record/${this.state.apiToken}`)
+      .then(response => {
+        this.setState({
+          refreshing: true,
+        });
+        return response.json();
+      })
+      .then(responseJson => {
+        this.setState({
+          refreshing: false,
+          records: responseJson,
+        });
+      })
+      .catch(error => console.log(error));
+  };
 
   render() {
     return (
@@ -61,7 +72,7 @@ class UserScreen extends React.Component {
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
           <Image
-            source={{uri: `https://recofit.jp/${this.state.tasks.url}`}}
+            source={{uri: `${this.state.tasks.url}`}}
             style={{width: 50, height: 50}}
           />
           <View>
@@ -74,7 +85,13 @@ class UserScreen extends React.Component {
               onPress={() => this.props.navigation.navigate('Logout')}
             />
           </View>
-          <ScrollView>
+          <ScrollView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={() => this._userRecordFetch()}
+              />
+            }>
             <RecordIndex
               records={this.state.records}
               navigation={this.props.navigation}

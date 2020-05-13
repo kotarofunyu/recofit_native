@@ -2,25 +2,6 @@ import React from 'react';
 import {Text, View, TextInput, StyleSheet} from 'react-native';
 
 export default class EventForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventData: [
-        {
-          name: '',
-          setData: [
-            {
-              weight: '',
-              rep: '',
-              set: '',
-              main: null,
-              renewal: null,
-            },
-          ],
-        },
-      ],
-    };
-  }
   render() {
     return (
       <View>
