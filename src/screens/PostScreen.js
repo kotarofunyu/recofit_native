@@ -56,6 +56,7 @@ export default class PostScreen extends React.Component {
         {weight: this.state.weight, rep: this.state.rep, set: this.state.set},
       ],
     });
+    console.log(this.state.weight);
     this.setState({name: '', weight: '', rep: '', set: ''});
   }
 
