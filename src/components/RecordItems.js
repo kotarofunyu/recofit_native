@@ -34,7 +34,7 @@ class RecordItems extends Component {
         <View>
           <RecordIndex key={i} imageInfo={data} />
           <Button
-            title="記録する"
+            title="記録㝙る"
             onPress={() => this.props.navigation.navigate('RecordDetail')}
           />
         </View>
@@ -45,7 +45,6 @@ class RecordItems extends Component {
   render() {
     return (
       <View>
-        <Button title="fetch" onPress={() => this._fetch()} />
         <ScrollView
           refreshControl={
             <RefreshControl

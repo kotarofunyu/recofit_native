@@ -24,6 +24,7 @@ export default class PostScreen extends React.Component {
       main: null,
       renewal: null,
       event_attributes: [],
+      set_data_test: [],
     };
   }
 
@@ -45,19 +46,22 @@ export default class PostScreen extends React.Component {
     increment += 1;
   }
 
-  addGrandChild() {
-    this.state.teststorage.setData[0].push({weight: '80', rep: '10', set: '3'});
-  }
-
   addChilds() {
     this.state.event_attributes.push({
       name: this.state.name,
-      set_datum_attributes: [
-        {weight: this.state.weight, rep: this.state.rep, set: this.state.set},
-      ],
+      set_datum_attributes: this.state.set_data_test,
     });
     console.log(this.state.weight);
-    this.setState({name: '', weight: '', rep: '', set: ''});
+    this.setState({name: ''});
+  }
+
+  addGrandChild() {
+    this.state.set_data_test.push({
+      weight: this.state.weight,
+      rep: this.state.rep,
+      set: this.state.set,
+    });
+    this.setState({weight: '', weight: '', rep: '', set: ''});
   }
 
   submitCreatePost() {
@@ -114,6 +118,12 @@ export default class PostScreen extends React.Component {
             value={this.state.set}
             onChangeText={set => this.setState({set})}
             placeholder="セット"
+          />
+          <Button
+            onPress={() => {
+              this.addGrandChild();
+            }}
+            title="+セット登録"
           />
           <Button
             onPress={() => {
