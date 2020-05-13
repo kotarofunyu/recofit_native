@@ -10,7 +10,7 @@ class RecordItems extends Component {
   };
 
   componentWillMount() {
-    axios.get('http://localhost/api/training_record').then(res => {
+    axios.get('https://recofit.jp/api/training_record').then(res => {
       this.setState({images: res.data, refreshing: true});
     });
   }

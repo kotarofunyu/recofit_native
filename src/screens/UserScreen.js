@@ -30,14 +30,16 @@ class UserScreen extends React.Component {
     this.setState({
       loading: true,
       apiToken: await AsyncStorage.getItem('api_token'),
-      userRecordUrl: `http://localhost/api/user_record/${this.state.apiToken}`,
-      test: 'http://localhost/api/user_record/Zj2bVMdX9kc3xjn5SjgE5hko',
+      userRecordUrl: `https://recofit.jp/api/user_record/${
+        this.state.apiToken
+      }`,
+      test: 'https://recofit.jp/api/user_record/Zj2bVMdX9kc3xjn5SjgE5hko',
     });
-    fetch(`http://localhost/api/user/${this.state.apiToken}`)
+    fetch(`http://recofit.jp/api/user/${this.state.apiToken}`)
       .then(response => response.json())
       .then(jsonData => this.setState({loading: false, tasks: jsonData}))
       .catch(error => console.error(error));
-    fetch(`http://localhost/api/user_record/${this.state.apiToken}`)
+    fetch(`https://recofit.jp/api/user_record/${this.state.apiToken}`)
       .then(response => response.json())
       .then(recordsData =>
         this.setState({loading: false, records: recordsData}),
@@ -59,7 +61,7 @@ class UserScreen extends React.Component {
         <View style={styles.UserWrapper}>
           <Heading name="ログイン中のユーザー" />
           <Image
-            source={{uri: `http://localhost/${this.state.tasks.url}`}}
+            source={{uri: `https://recofit.jp/${this.state.tasks.url}`}}
             style={{width: 50, height: 50}}
           />
           <View>
