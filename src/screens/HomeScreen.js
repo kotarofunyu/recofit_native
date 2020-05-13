@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
         <Heading name="記録一覧" />
         <Button
           title="Let's Record!"
-          onPress={() => this.props.navigation.navigate('Post')}
+          onPress={() => this.props.navigation.navigate('Post', {id: 1234})}
         />
         <RecordItems
           navigation={this.props.navigation}

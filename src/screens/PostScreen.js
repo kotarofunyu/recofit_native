@@ -86,6 +86,7 @@ export default class PostScreen extends React.Component {
         <Title />
         <Heading name="記録する" />
         <View>
+          <Text>{this.props.route.params.id}</Text>
           <TextInput
             placeholder="今日のトレーニングはどうだった？"
             value={this.state.comment}

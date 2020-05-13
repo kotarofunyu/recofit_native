@@ -31,7 +31,9 @@ export default class RecordList extends React.Component {
         </View>
         <Button
           title="詳細"
-          onPress={() => this.props.navigation.navigate('RecordDetail')}
+          onPress={() =>
+            this.props.navigation.navigate('RecordDetail', {record})
+          }
         />
       </View>
     );
