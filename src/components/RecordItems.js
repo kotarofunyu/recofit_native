@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, Button, RefreshControl} from 'react-native';
-import axios from 'axios';
 import RecordIndex from './RecordIndex';
 
 class RecordItems extends Component {
@@ -9,17 +8,24 @@ class RecordItems extends Component {
     refreshing: false,
   };
 
-  componentWillMount() {
-    axios.get('http://localhost/api/training_record').then(res => {
-      this.setState({images: res.data, refreshing: true});
-    });
+  componentDidMount() {
+    this._fetch();
   }
 
-  _onRefresh = () => {
-    this.setState({refreshing: true});
-    this.componentWillMount().then(() => {
-      this.setState({refreshing: false});
-    });
+  _fetch = () => {
+    fetch('https://recofit.jp/api/training_record')
+      .then(response => {
+        this.setState({refreshing: true});
+        return response.json();
+      })
+      .then(responseJson => {
+        console.log(responseJson);
+        this.setState({
+          refreshing: false,
+          images: responseJson,
+        });
+      })
+      .catch(error => console.log(error));
   };
 
   renderRecords() {
@@ -39,7 +45,14 @@ class RecordItems extends Component {
   render() {
     return (
       <View>
-        <ScrollView>
+        <Button title="fetch" onPress={() => this._fetch()} />
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={() => this._fetch()}
+            />
+          }>
           <RecordIndex
             records={this.state.images}
             navigation={this.props.navigation}

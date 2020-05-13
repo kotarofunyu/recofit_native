@@ -17,7 +17,7 @@ class EventScreen extends React.Component {
     super(props);
     this.state = {
       loading: '',
-      apiToken: '',
+      apiToken: 'gdiMpLx2qPz2zQTyPG6sT4Fj',
       events: [],
     };
   }
@@ -27,7 +27,7 @@ class EventScreen extends React.Component {
       loading: true,
       apiToken: await AsyncStorage.getItem('api_token'),
     });
-    fetch(`http://localhost/api/user_event/${this.state.apiToken}`)
+    fetch(`https://recofit.jp/api/user_event/${this.state.apiToken}`)
       .then(response => response.json())
       .then(recordsData => this.setState({loading: false, events: recordsData}))
       .catch(error => console.error(error));
@@ -39,6 +39,7 @@ class EventScreen extends React.Component {
         <Title />
         <View style={styles.UserWrapper}>
           <Heading name="種目一覧" />
+          <Text>{this.state.apiToken}</Text>
           <FlatList
             data={this.state.events}
             removeClippedSubviews={false}

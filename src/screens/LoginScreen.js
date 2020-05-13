@@ -6,8 +6,9 @@ import {
   TextInput,
   ActivityIndicator,
   StyleSheet,
+  AsyncStorage,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -17,14 +18,14 @@ export default class Login extends React.Component {
 
   async componentDidMount() {
     if (await AsyncStorage.getItem('api_token')) {
-      this.props.navigation.navigate('main');
+      this.props.navigation.navigate('Home');
     }
   }
 
   onSubmit() {
     this.setState({loading: true});
     return fetch(
-      `http://localhost/api/login.json?id=${this.state.name}&password=${
+      `https://recofit.jp/api/login.json?id=${this.state.name}&password=${
         this.state.password
       }`,
     )
@@ -33,7 +34,7 @@ export default class Login extends React.Component {
         this.setState({loading: false});
         if (jsonData['api_token']) {
           AsyncStorage.setItem('api_token', jsonData['api_token']);
-          this.props.navigation.navigate('main');
+          this.props.navigation.navigate('Home');
         } else {
           this.setState({failed: true});
         }

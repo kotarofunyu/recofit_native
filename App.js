@@ -13,6 +13,7 @@ import PostScreen from './src/screens/PostScreen';
 import CreateUserScreen from './src/screens/CreateUserScreen';
 import RecordScreen from './src/screens/RecordScreen';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import Login from './src/screens/LoginScreen';
 Ionicons.loadFont();
 
 const HomeStack = createStackNavigator();
@@ -20,6 +21,8 @@ const HomeStack = createStackNavigator();
 const UserStack = createStackNavigator();
 
 const RecordStack = createStackNavigator();
+
+const LoginLogout = createStackNavigator();
 
 function HomeStackScreen() {
   return (
@@ -38,6 +41,16 @@ function UserStackScreen() {
       <RecordStack.Screen name="RecordDetail" component={RecordScreen} />
       <UserStack.Screen name="Logout" component={MainScreen} />
     </UserStack.Navigator>
+  );
+}
+
+function LoginLogoutScreen() {
+  return (
+    <LoginLogout.Navigator>
+      <LoginLogout.Screen name="Logout" component={MainScreen} />
+      <LoginLogout.Screen name="Login" component={LoginScreen} />
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+    </LoginLogout.Navigator>
   );
 }
 
@@ -65,6 +78,7 @@ export default function App() {
           activeTintColor: '#ffa500',
           inactiveTintColor: 'grey',
         }}>
+        <Tab.Screen name="ログアウト" component={LoginLogoutScreen} />
         <Tab.Screen name="ホーム" component={HomeStackScreen} />
         <Tab.Screen name="種目" component={EventScreen} />
         <Tab.Screen name="ユーザー" component={UserStackScreen} />
